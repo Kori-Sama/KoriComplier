@@ -2,4 +2,4 @@
 
 var app = new App(args);
 
-app.run();
+app.Run();

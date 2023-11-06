@@ -7,43 +7,33 @@ using System.Threading.Tasks;
 
 namespace KoriComplier;
 
-public class Lexer {
+public class Lexer
+{
     private readonly string text;
     private int position;
-    private char Current {
-        get {
+    private char Current
+    {
+        get
+        {
             if (position >= text.Length)
                 return '\0';
             return text[position];
         }
     }
-    public Lexer(string text) {
+    public Lexer(string text)
+    {
         this.text = text;
     }
-    public Token NextToken() {
+    public Token NextToken()
+    {
         if (position >= text.Length)
             return new Token(TokenType.EOF, "\0", null, position);
-
-        if (char.IsDigit(Current)) {
-            var start = position;
-            while (char.IsDigit(Current)) {
-                Next();
-            }
-            var length = position - start;
-            var _text = text.Substring(start, length);
-            _ = int.TryParse(_text, out int value);
-            return new Token(TokenType.Number, _text, value, start);
-        }
-        if (char.IsWhiteSpace(Current)) {
-            var start = position;
-            while (char.IsWhiteSpace(Current)) {
-                Next();
-            }
-            var length = position - start;
-            var _text = text.Substring(start, length);
-            return new Token(TokenType.Whitespace, _text, null, start);
-        }
-        switch (Current) {
+        if (char.IsDigit(Current))
+            return DigitMatch();
+        if (char.IsWhiteSpace(Current))
+            return WhiteSpaceMatch();
+        switch (Current)
+        {
             case '+': return new Token(TokenType.Plus, "+", null, position++);
             case '-': return new Token(TokenType.Minus, "-", null, position++);
             case '*': return new Token(TokenType.Star, "*", null, position++);
@@ -54,4 +44,23 @@ public class Lexer {
         return new Token(TokenType.Unknown, text.Substring(position - 1, 1), null, position++);
     }
     private void Next() => position++;
+    private Token DigitMatch()
+    {
+        var start = position;
+        while (char.IsDigit(Current))
+            Next();
+        var length = position - start;
+        var _text = text.Substring(start, length);
+        _ = int.TryParse(_text, out int value);
+        return new Token(TokenType.Number, _text, value, start);
+    }
+    private Token WhiteSpaceMatch()
+    {
+        var start = position;
+        while (char.IsWhiteSpace(Current))
+            Next();
+        var length = position - start;
+        var _text = text.Substring(start, length);
+        return new Token(TokenType.WhiteSpace, _text, null, start);
+    }
 }

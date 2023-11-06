@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace KoriComplier;
 
-public enum TokenType {
+public enum TokenType
+{
     // Single-character tokens.
     LeftParen, RightParen, LeftBrace, RightBrace,
     Semicolon, Dot, Minus, Plus, Slash, Star,
@@ -16,25 +17,28 @@ public enum TokenType {
     Greater, GreaterEqual,
     Less, LessEqual,
     // Literals.
-    Number, String, Whitespace,
+    Number, String, WhiteSpace,
     // Keywords.
 
     //Others.
     EOF, Unknown,
 }
 
-public class Token {
+public class Token
+{
     public TokenType Type { get; }
     public string Literal { get; }
     public Object? Value { get; }
     public int Position { get; }
-    public Token(TokenType type, string literal, Object? value, int position) {
+    public Token(TokenType type, string literal, Object? value, int position)
+    {
         Type = type;
         Literal = literal;
         Value = value;
         Position = position;
     }
-    public override string ToString() {
-        return $"Type: {Type} Literal: {Literal} Value{Value ?? null}";
+    public override string ToString()
+    {
+        return $"{Literal} with type of {Type} and value of {Value ?? "Null"}";
     }
 }

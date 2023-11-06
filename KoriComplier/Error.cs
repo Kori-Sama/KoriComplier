@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 
 namespace KoriComplier;
 
-public enum ErrorType {
+public enum ErrorType
+{
     SyntaxError
 }
 
-public class Error {
+public class Error
+{
     public ErrorType Type { get; }
     public int Line { get; }
     public string Message { get; }
 
-    public Error(ErrorType type, int line, string message) {
+    public Error(ErrorType type, int line, string message)
+    {
         Type = type;
         Line = line;
         Message = message;
     }
-    public void Report() {
+    public void Report()
+    {
         Console.Error.WriteLine($"{Type}: {Message} in line {Line}");
     }
 }

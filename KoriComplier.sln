@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoriComplier", "KoriComplier\KoriComplier.csproj", "{6BB5A82F-4DB6-4974-8D9C-FAE4CD8B8AF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoriComplier", "KoriComplier\KoriComplier.csproj", "{6BB5A82F-4DB6-4974-8D9C-FAE4CD8B8AF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplierTest", "ComplierTest\ComplierTest.csproj", "{D5D73A6E-9C7F-4073-9B49-51D62358884D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6BB5A82F-4DB6-4974-8D9C-FAE4CD8B8AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BB5A82F-4DB6-4974-8D9C-FAE4CD8B8AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BB5A82F-4DB6-4974-8D9C-FAE4CD8B8AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D73A6E-9C7F-4073-9B49-51D62358884D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D73A6E-9C7F-4073-9B49-51D62358884D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D73A6E-9C7F-4073-9B49-51D62358884D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D73A6E-9C7F-4073-9B49-51D62358884D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

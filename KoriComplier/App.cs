@@ -6,41 +6,50 @@ using System.Threading.Tasks;
 
 namespace KoriComplier;
 
-public class App {
+public class App
+{
     private readonly string[] args;
-    public App(string[] args) {
+    public App(string[] args)
+    {
         this.args = args;
     }
-    public void run() {
-        if (args.Length > 1) {
+    public void Run()
+    {
+        if (args.Length > 1)
+        {
             Console.WriteLine("Invaild parameter");
             return;
-        } else if (args.Length == 1) {
+        }
+        else if (args.Length == 1)
+        {
             RunFile(args[0]);
-        } else {
+        }
+        else
+        {
             RunPrompt();
         }
     }
-    private void RunPrompt() {
+    private static void RunPrompt()
+    {
         Console.WriteLine("[Script Mode]");
-        while (true) {
+        while (true)
+        {
             Console.Write("> ");
             var line = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(line))
                 return;
             var lexer = new Lexer(line);
-            while (true) {
+            while (true)
+            {
                 var token = lexer.NextToken();
                 if (token.Type == TokenType.EOF)
                     break;
-                Console.Write($"type: {token.Type} literal: {token.Literal}");
-                if (token.Value != null)
-                    Console.Write($" value:{token.Value}");
-                Console.WriteLine();
+                Console.WriteLine(token);
             }
         }
     }
-    private void RunFile(string text) {
+    private static void RunFile(string text)
+    {
         throw new NotImplementedException();
     }
 }

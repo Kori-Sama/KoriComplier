@@ -14,12 +14,12 @@ public class Parser
     {
         var lexer = new Lexer(text);
         var tokens = new List<Token>();
-        Token token;
+        Token? token;
         do
         {
             token = lexer.NextToken();
             if (token.Type != TokenType.WhiteSpace &&
-               token.Type != TokenType.Unknown)
+                token.Type != TokenType.Unknown)
             {
                 tokens.Add(token);
             }

@@ -19,7 +19,6 @@ abstract class Node
 
 abstract class Expression : Node
 {
-
 }
 sealed class NumberExpression : Expression
 {
@@ -43,5 +42,4 @@ sealed class BinaryExpression : Expression
         OperatorToken = operatorToken;
         Right = right;
     }
-
 }

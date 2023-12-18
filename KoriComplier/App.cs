@@ -17,39 +17,29 @@ public class App
     {
         if (args.Length > 1)
         {
-            Console.WriteLine("Invaild parameter");
+            Console.WriteLine("Invalid parameter");
             return;
         }
         else if (args.Length == 1)
-        {
             RunFile(args[0]);
-        }
         else
-        {
             RunPrompt();
-        }
     }
-    private static void RunPrompt()
+    private void RunPrompt()
     {
         Console.WriteLine("[Script Mode]");
         while (true)
         {
-            Console.Write("> ");
-            var line = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(line))
-                return;
+            Console.Write("> "); var line = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(line)) return;
             var lexer = new Lexer(line);
             while (true)
             {
                 var token = lexer.NextToken();
-                if (token.Type == TokenType.EOF)
-                    break;
+                if (token.Type == TokenType.EOF) break;
                 Console.WriteLine(token);
             }
         }
     }
-    private static void RunFile(string text)
-    {
-        throw new NotImplementedException();
-    }
+    private static void RunFile(string text) { throw new NotImplementedException(); }
 }

@@ -8,8 +8,7 @@ namespace KoriComplier;
 
 public class Parser
 {
-    private readonly Token[] tokens;
-    private int position;
+    private readonly List<Token> tokens;
     public Parser(string text)
     {
         var lexer = new Lexer(text);
@@ -18,13 +17,10 @@ public class Parser
         do
         {
             token = lexer.NextToken();
-            if (token.Type != TokenType.WhiteSpace &&
-                token.Type != TokenType.Unknown)
-            {
+            if (token.Type != TokenType.Unknown)
                 tokens.Add(token);
-            }
         } while (token.Type != TokenType.EOF);
 
-        this.tokens = tokens.ToArray();
+        this.tokens = tokens;
     }
 }

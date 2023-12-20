@@ -19,7 +19,7 @@ public enum TokenType
     // Literals.
     Integer, String, Name,
     // Keywords.
-    Var, Let, Function, Return, If, Else,
+    Var, Let, Function, Return, If, Else, Loop, Struct,
     //Others.
     EOF, Unknown,
 }

@@ -38,7 +38,6 @@ public class UnitTest_Lexer
             new Token(TokenType.Name,"b",null),
             new Token(TokenType.Semicolon,";",null),
             new Token(TokenType.RightBrace,"}",null),
-            // new Token(TokenType.Semicolon,";",null),
             new Token(TokenType.Var,"var",null),
             new Token(TokenType.Name,"sum",null),
             new Token(TokenType.Equal,"=",null),

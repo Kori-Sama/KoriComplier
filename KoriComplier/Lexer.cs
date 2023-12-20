@@ -87,6 +87,8 @@ public class Lexer
             "return" => new Token(TokenType.Return, _text, null),
             "if" => new Token(TokenType.If, _text, null),
             "else" => new Token(TokenType.Else, _text, null),
+            "loop" => new Token(TokenType.Loop,_text,null),
+            "struct" => new Token(TokenType.Struct,_text,null),
             _ => new Token(TokenType.Name, _text, null),
         };
         return token;

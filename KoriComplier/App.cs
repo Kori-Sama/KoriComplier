@@ -32,12 +32,11 @@ public class App
         {
             Console.Write("> "); var line = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(line)) return;
-            var lexer = new Lexer(line);
-            while (true)
+            var tokens = Lexer.GetTokens(line);
+            foreach (var token in tokens)
             {
-                var token = lexer.NextToken();
-                if (token.Type == TokenType.EOF) break;
-                Console.WriteLine(token);
+                if (token.Type != TokenType.EOF)
+                    Console.WriteLine(token);
             }
         }
     }

@@ -11,16 +11,21 @@ public class Parser
     private readonly List<Token> tokens;
     public Parser(string text)
     {
-        var lexer = new Lexer(text);
-        var tokens = new List<Token>();
-        Token? token;
-        do
-        {
-            token = lexer.NextToken();
-            if (token.Type != TokenType.Unknown)
-                tokens.Add(token);
-        } while (token.Type != TokenType.EOF);
+        this.tokens = Lexer.GetTokens(text);
+    }
 
-        this.tokens = tokens;
+    private void Calculate()
+    {
+        for (int i = 0; i < tokens.Count(); i++)
+        {
+            var type = tokens[i].Type;
+            if (type == TokenType.Plus
+            || type == TokenType.Minus
+            || type == TokenType.Star
+            || type == TokenType.Slash)
+            {
+                // TODO!
+            }
+        }
     }
 }

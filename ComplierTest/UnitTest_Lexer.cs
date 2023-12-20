@@ -97,4 +97,24 @@ public class UnitTest_Lexer
             Assert.Equal(tokensExpect[i], tokens[i]);
         }
     }
+    [Fact]
+    public void Test_String() {
+        var code = "let str = \"This is a string;\";";
+        var tokens = Lexer.GetTokens(code);
+        var tokensExpect = new List<Token>() {
+            new Token(TokenType.Let,"let",null),
+            new Token(TokenType.Name,"str",null),
+            new Token(TokenType.Equal,"=",null),
+            new Token(TokenType.String,"This is a string;","This is a string;"),
+            new Token(TokenType.Semicolon,";",null),
+            new Token(TokenType.EOF,"\0",null),
+        };
+        
+        Assert.Equal(tokensExpect.Count(), tokens.Count());
+
+        for (var i = 0; i < tokensExpect.Count(); i++)
+        {
+            Assert.Equal(tokensExpect[i], tokens[i]);
+        }
+    }
 }

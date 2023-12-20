@@ -34,6 +34,8 @@ public class Lexer
             return NameMatch();
         if (char.IsDigit(Current))
             return DigitMatch();
+        if (Current == '\"')
+            return StringMatch();
         var token = Current switch
         {
             '+' => new Token(TokenType.Plus, "+", null),
@@ -57,6 +59,8 @@ public class Lexer
         position++;
         return token;
     }
+
+
     private void Next() => position++;
     private Token DigitMatch()
     {
@@ -86,6 +90,17 @@ public class Lexer
             _ => new Token(TokenType.Name, _text, null),
         };
         return token;
+    }
+    private Token StringMatch()
+    {
+        Next();
+        var start = position;
+        while (Current != '\"')
+            Next();
+        var length = position - start;
+        Next();
+        var _text = text.Substring(start, length);
+        return new Token(TokenType.String, _text, _text);
     }
     private Token PeekEqual(TokenType T, char pre)
     {
